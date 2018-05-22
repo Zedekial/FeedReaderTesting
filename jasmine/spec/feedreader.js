@@ -13,6 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
+
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -26,11 +27,20 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        * in the allFeeds object and ensures it has a URL defined
+        * and that the URL is not empty.
+        */
+        it('should have a URL defined', function () {
+
+          expect(allFeeds).toEqual(jasmine.arrayContaining(["url"]));
+
+          allFeeds.forEach(function (info){
+            expect(info.url).toContain('http://');
+            expect(info.url).toContain('.com');
+            expect(info.url).not.toBe('');
+          });
+        });
 
 
         /* TODO: Write a test that loops through each feed
