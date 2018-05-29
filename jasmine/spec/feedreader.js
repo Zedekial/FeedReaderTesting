@@ -55,7 +55,7 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-    describe('The Menu', function (){
+    describe('The Menu', function () {
       let bodyClass = document.querySelectorAll('body')[0].className;
       let menuIcon = document.querySelector('.menu-icon-link');
       /* TODO: Write a test that ensures the menu element is
@@ -63,7 +63,7 @@ $(function() {
       * the CSS to determine how we're performing the
       * hiding/showing of the menu element.
       */
-      it('should be hidden by default', function (){
+      it('should be hidden by default', function () {
         expect(bodyClass).toContain('menu-hidden');
       });
 
@@ -82,13 +82,25 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function () {
+      let entry;
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+      beforeEach(function (done) {
+        loadFeed(0, done);
+      });
+      /* TODO: Write a test that ensures when the loadFeed
+      * function is called and completes its work, there is at least
+      * a single .entry element within the .feed container.
+      * Remember, loadFeed() is asynchronous so this test will require
+      * the use of Jasmine's beforeEach and asynchronous done() function.
+      */
+      it('should have at least a single entry element within the feed container', function (done) {
+        entry = document.getElementsByClassName('entry').length;
+        expect(entry).not.toBe(0);
+        expect(entry).not.toBe(undefined);
+        done();
+      });
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
